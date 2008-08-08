@@ -1,0 +1,71 @@
+The example files in this directory demonstrate how to use the
+options -b, -f, and -r and the optional item appearances file.
+This file also explains the conversion scripts, which can convert
+different input formats into the format needed by the apriori program.
+
+In the file test1.tab transactions are separated by newline characters
+and the items of a transaction are separated by spaces. This is the
+standard input format and hence the file can be processed directly:
+  apriori test1.tab test1.rul
+
+In the file test2.tab the same transactions can be found, but several
+different field separators are used. This file can be processed with:
+  apriori -f ",.;:" -l test2.tab test2.rul
+
+The files test3.tab to test5.tab are in formats that cannot be
+processed directly with the apriori program, but which may be common.
+
+In the file test3.tab each line contains a transaction identifier and
+an item, separated by a space. This file can be converted into the
+standard input format with the script tid2set, i.e., with
+  tid2set test3.tab x.tab
+Note, however, that the input file (here: test3.tab) must be sorted
+w.r.t. the transaction identifier, so that items belonging to the
+same transaction occupy consecutive lines/records.
+
+In the file test4.tab the first line states the item names and the
+following lines contain flags T (true) and F (false) depending on
+whether the item is contained in the transaction represented by the
+line or not. This format can be converted into the standard input
+format with the script flg2set, i.e., with
+  flg2set test4.tab x.tab
+
+In the file test5.tab there is one item per line and transactions
+are separated by blank lines. This format can be converted into the
+standard input format with the script row2set, i.e., with
+  row2set test5.tab x.tab
+
+The additional scripts tab2set and hdr2set convert tables with column
+numbers or column names into a format appropriate for the apriori
+program. They are invoked in the same way as all other scripts
+discussed above, i.e., with
+  tab2set a.tab b.tab
+or
+  hdr2set a.tab b.tab
+where a.tab is the name of the input file and b.tab the name of the
+output file. The script tab2set replaces each table entry "x" of the
+input file by "Xi=x", where i is the column number (starting with 1).
+The script hdr2set reads the variable names from the first line of
+the input file and then replaces each table entry "x" by "X=x", where
+"X" is the variable name that was found in the corresponding column
+of the first line. These scripts are handy if you want to process
+tabular data by treating each table row as a transaction.
+
+The file test.app demonstrates the use of item appearance indicators.
+The first line of this file ('body') states that any item not explicitly
+mentioned in this file may appear only in the body of a rule. The second
+line says that item 2 may appear only in the head of a rule. Hence, by
+processing the file test1.tab with
+  apriori test1.tab test.rul test.app
+only rules with item 2 in the head are generated.
+
+Note that any input may also be read from standard input and any output
+may be sent to standard output, simply by specifying a '-' or an empty
+string "" instead of a filename. For example
+  apriori test1.tab -
+writes the rules directly to the terminal. They may be piped to any
+other program, since all other messages of the apriori program are
+written to standard error.
+
+Enjoy,
+Christian Borgelt

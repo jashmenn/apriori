@@ -1,0 +1,23 @@
+#!/bin/sh
+gawk '
+function output ()
+{
+  if (i > 0)
+    printf("%s",  items[0]);
+  for (k = 0; ++k < i; )
+    printf(" %s", items[k]);
+  printf("\n");
+}
+
+BEGIN { tid = ""; i = 0; }
+{
+  if ($1 == tid)
+    items[i++] = $2;
+  else {
+    if (tid != "") output();
+    tid      = $1;
+    items[0] = $2; i = 1;
+  }
+}
+END { output(); }
+' $1 > $2

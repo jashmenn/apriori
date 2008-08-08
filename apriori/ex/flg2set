@@ -1,0 +1,15 @@
+#!/bin/sh
+gawk '
+(NR == 1) {
+  for (i = 0; ++i <= NF; )
+    items[i] = $i;
+}
+(NR > 1) {
+  for (i = k = 0; ++i <= NF; ) {
+    if ($i == "T") {
+      if (k++ > 0) printf(" ");
+      printf("%s", items[i]);
+    }
+  }
+  printf("\n");
+}' $1 > $2

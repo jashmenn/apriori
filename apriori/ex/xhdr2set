@@ -1,0 +1,33 @@
+#!/bin/sh
+gawk -v app=$3 -v out=$4 '
+BEGIN {
+  FS = " ";
+  if ((app != "") && (out != "")) {
+    getline dflt < app;
+    while ((getline < app) > 0)
+      base[$1] = $2;
+  }
+  FS = ",";
+}
+(NR == 1) {
+  for (i = 0; ++i <= NF; )
+    items[i] = $i;
+}
+(NR > 1) {
+  for (i = k = 0; ++i <= NF; ) {
+    if (k++ > 0) printf(" ");
+    item = (items[i] "=" $i);
+    printf("%s", item);
+    if (items[i] in base) apps[item] = base[items[i]];
+    else                  apps[item] = dflt;
+  }
+  printf("\n");
+}
+END {
+  if (out != "") {
+    print dflt > out;
+    for (t in apps)
+      if (apps[t] != dflt)
+        printf("%s %s\n", t, apps[t]) > out;
+  }
+}' $1 > $2
