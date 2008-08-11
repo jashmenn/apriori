@@ -1,0 +1,27 @@
+require 'fileutils'
+
+desc "Do everything"
+task "get_it_done" do
+  sh "pushd Apriori;
+      rm *.o
+      rm *.bundle
+      ruby extconf.rb;
+      make;
+      popd;
+      ruby apriori_test.rb;"
+end
+
+
+# working_dir = File.dirname(__FILE__) + "/Apriori"
+
+# desc "Do everything"
+# task :do_all => [:clean] do 
+# end
+
+# file "#{working_dir}/Makefile" do 
+#   sh "cd #{working_dir} && ruby extconf.rb"
+# end
+
+# task :clean do
+#   rm_f FileList['#{working_dir/}*.o'], :verbose => true
+# end
