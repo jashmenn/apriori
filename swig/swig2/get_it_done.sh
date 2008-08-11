@@ -1,9 +1,9 @@
 #!/bin/bash
 rm *.o
 rm *.bundle
-rm apriori_wrap.c
+rm intexp_wrap.c
 rm Makefile
-swig -ruby apriori.i
+swig -ruby intexp.i
 ruby extconf.rb
 make
 ruby test_swig.rb

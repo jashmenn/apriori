@@ -1,0 +1,5 @@
+*.o
+*.bundle
+*.log
+.DS_Store
+swig/Makefile
