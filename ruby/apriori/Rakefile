@@ -5,6 +5,7 @@ task "get_it_done" do
   sh "pushd Apriori;
       rm *.o
       rm *.bundle
+      rm Makefile
       ruby extconf.rb;
       make;
       popd;
