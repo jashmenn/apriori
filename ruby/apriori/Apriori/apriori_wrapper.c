@@ -66,6 +66,7 @@
 #include <math.h>
 #include <time.h>
 #include <assert.h>
+#include "apriori_wrapper.h"
 #include "scan.h"
 #include "tract.h"
 #include "istree.h"
@@ -178,7 +179,7 @@ static FILE    *out     = NULL; /* output file */
   Main Functions
 ----------------------------------------------------------------------*/
 
-static void help (void)
+void help (void)
 {                               /* --- print help on eval. measures */
   #ifndef QUIET
   fprintf(stderr, "\n");        /* terminate startup message */

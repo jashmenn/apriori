@@ -168,6 +168,7 @@ set statusline=%<%f\ %h%m%r%{RailsStatusline()}%=%-16(\ %l,%c-%v\ %)%P
 set tabstop=4
 set wildcharm=26
 set wildmenu
+set window=49
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -182,7 +183,8 @@ badd +1 /Library/WebServer/Documents/docs/ruby/c/ruby_c/readme.ext.txt
 badd +3 get_it_done.sh
 badd +16 Apriori/Apriori.c
 badd +234 Apriori/apriori_wrapper.c
-badd +0 Apriori/extconf.rb
+badd +17 Apriori/extconf.rb
+badd +6 ../../swig/extconf.rb
 args apriori_test.rb
 edit /Library/WebServer/Documents/docs/ruby/c/ruby_c/readme.ext.txt
 set splitbelow splitright
@@ -284,11 +286,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 638 - ((24 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+638
 normal! 0
 tabedit Rakefile
 set splitbelow splitright
@@ -392,12 +394,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 16 - ((15 * winheight(0) + 19) / 39)
+let s:l = 8 - ((7 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
-normal! 0
+8
+normal! 016l
 tabedit apriori_test.rb
 set splitbelow splitright
 set nosplitbelow
@@ -500,7 +502,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 3 - ((2 * winheight(0) + 19) / 39)
+let s:l = 3 - ((2 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -606,12 +608,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 16 - ((15 * winheight(0) + 19) / 39)
+let s:l = 19 - ((18 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
-normal! 013l
+19
+normal! 016l
 tabedit Apriori/apriori_wrapper.c
 set splitbelow splitright
 set nosplitbelow
@@ -712,12 +714,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 234 - ((19 * winheight(0) + 19) / 39)
+let s:l = 70 - ((39 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-234
-normal! 07l
+70
+normal! 012l
 tabedit Apriori/extconf.rb
 set splitbelow splitright
 set nosplitbelow
@@ -820,12 +822,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 17 - ((16 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+17
+normal! 092l
 tabnext 6
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

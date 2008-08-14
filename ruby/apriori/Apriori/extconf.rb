@@ -11,8 +11,8 @@ $objs = ["#{apriori_root}/util/src/vecops.o",
          "#{apriori_root}/math/src/chi2.o", 
          "#{apriori_root}/apriori/src/tract.o",
          "#{apriori_root}/apriori/src/istree.o",
-         "Apriori.o",
-         "apriori_wrapper.o"]
+         "apriori_wrapper.o",
+         "Apriori.o"]
 
 $CPPFLAGS = " -I#{apriori_root}/util/src -I#{apriori_root}/math/src -I#{apriori_root}/apriori/src "
 
