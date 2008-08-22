@@ -1,0 +1,19 @@
+Apriori C code by Christian Borgelt. Taken directly from: todo, url
+
+overview:
+  apriori/     - christian's apriori code (i'm currently debugging it for ruby purposes, but it will eventually be all the original)
+  math/, util/ - christian's supporting code
+  swig/        - my initial attempt at a swig wrapper, it doesnt work at all
+  ruby/
+    - test/    - a "hello world" of ruby c extensions
+    - apriori  - this is where most of my work is
+
+So to try it out:
+
+  cd ruby/apriori
+  rake get_it_done 
+
+This will build the extension and run the "test"
+
+Nate Murray
+nate@natemurray.com

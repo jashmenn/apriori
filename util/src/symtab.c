@@ -316,6 +316,7 @@ void* st_lookup (SYMTAB *tab, const char *name, int type)
   int i;                        /* index of hash bucket */
   STE *ste;                     /* to traverse bucket list */
 
+  fprintf(stderr, "calling st_lookup\n");
   assert(tab && name);          /* check arguments */
   i   = tab->hash(name, type) % tab->size;
   ste = tab->bvec[i];           /* compute index of hash bucket */

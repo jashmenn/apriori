@@ -103,7 +103,9 @@ static int _get_item (ITEMSET *iset, FILE *file)
   d   = ts_next(iset->tscan, file, NULL, 0);
   buf = ts_buf(iset->tscan);    /* read the next field (item name) */
   if ((d == TS_ERR) || (buf[0] == '\0')) return d;
+  fprintf(stderr, "calling _get_item\n");
   item = nim_byname(iset->nimap, buf);
+  fprintf(stderr, "calling _get_item\n");
   if (!item) {                  /* look up the name in name/id map */
     if (iset->app == APP_NONE)  /* if new items are to be ignored, */
       return d;                 /* do not register the item */
@@ -323,10 +325,13 @@ int is_read (ITEMSET *iset, FILE *file)
   char *buf;                    /* read buffer */
   ITEM *item;                   /* pointer to item */
 
+
   assert(iset && file);         /* check the function arguments */
   iset->cnt = 0;                /* initialize the item counter */
+  fprintf(stderr, "calling is_read\n");
   d   = _get_item(iset, file);  /* read the first item and */
   buf = ts_buf(iset->tscan);    /* get the read buffer */
+
   if ((d      == TS_EOF)        /* if at the end of the file */
   &&  (buf[0] == '\0'))         /* and no item has been read, */
     return 1;                   /* return 'end of file' */

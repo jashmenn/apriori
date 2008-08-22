@@ -3,4 +3,5 @@ include Apriori
 puts test1
 # => 10
 
-pp help
+# pp help
+pp do_apriori

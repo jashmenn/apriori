@@ -1,15 +1,26 @@
 require 'fileutils'
 
 desc "Do everything"
+# TODO - need to basically rm them all?
 task "get_it_done" do
-  sh "pushd Apriori;
-      rm *.o
-      rm *.bundle
-      rm Makefile
+  sh "
+  pushd ../../apriori/src/;
+      # rm *.o;
+      make;
+      popd;
+  pushd ../../util/src/;
+      # rm *.o
+      make;
+      popd;
+  pushd Apriori;
+      rm *.o;
+      rm *.bundle;
+      rm Makefile;
       ruby extconf.rb;
       make;
       popd;
-      ruby apriori_test.rb;"
+      ruby -d apriori_test.rb;
+      "
 end
 
 
