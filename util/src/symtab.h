@@ -55,13 +55,20 @@ typedef struct {                /* --- symbol table --- */
 /*----------------------------------------------------------------------
   Symbol Table Functions
 ----------------------------------------------------------------------*/
+
+/*
+ * these are the ones from ruby
+int st_delete()
+int st_insert()
+*/
+
 extern SYMTAB*     st_create  (int init, int max,
                                HASHFN hash, SYMFN delfn);
-extern void        st_delete  (SYMTAB *tab);
-extern void*       st_insert  (SYMTAB *tab, const char *name, int type,
+extern void        ap_st_delete  (SYMTAB *tab);
+extern void*       ap_st_insert  (SYMTAB *tab, const char *name, int type,
                                unsigned size);
 extern int         st_remove  (SYMTAB *tab, const char *name, int type);
-extern void*       st_lookup  (SYMTAB *tab, const char *name, int type);
+extern void*       ap_st_lookup  (SYMTAB *tab, const char *name, int type);
 extern void        st_begblk  (SYMTAB *tab);
 extern void        st_endblk  (SYMTAB *tab);
 extern int         st_symcnt  (const SYMTAB *tab);
@@ -101,9 +108,9 @@ extern void        nim_stats  (const NIMAP *nimap);
 
 /*--------------------------------------------------------------------*/
 #ifdef NIMAPFN
-#define nim_delete(m)     st_delete(m)
-#define nim_add(m,n,s)    st_insert(m,n,0,s)
-#define nim_byname(m,n)   st_lookup(m,n,0)
+#define nim_delete(m)     ap_st_delete(m)
+#define nim_add(m,n,s)    ap_st_insert(m,n,0,s)
+#define nim_byname(m,n)   ap_st_lookup(m,n,0)
 #define nim_byid(m,i)     ((void*)(m)->ids[i])
 #define nim_name(d)       st_name(d)
 #define nim_cnt(m)        st_symcnt(m)

@@ -5,12 +5,13 @@ desc "Do everything"
 task "get_it_done" do
   sh "
   pushd ../../apriori/src/;
-      # rm *.o;
+      rm *.o;
       make;
       popd;
   pushd ../../util/src/;
-      # rm *.o
-      rm tabscan.o
+      rm *.o
+      rm tabscan.o; 
+      rm symtab.o;
       make;
       popd;
   pushd Apriori;

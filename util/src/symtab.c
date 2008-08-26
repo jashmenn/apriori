@@ -209,18 +209,18 @@ SYMTAB* st_create (int init, int max, HASHFN hash, SYMFN delfn)
 
 /*--------------------------------------------------------------------*/
 
-void st_delete (SYMTAB *tab)
+void ap_st_delete (SYMTAB *tab)
 {                               /* --- delete a symbol table */
   assert(tab && tab->bvec);     /* check argument */
   _delsym(tab);                 /* delete all symbols, */
   free(tab->bvec);              /* the bucket vector, */
   if (tab->ids) free(tab->ids); /* the identifier vector, */
   free(tab);                    /* and the symbol table body */
-}  /* st_delete() */
+}  /* ap_st_delete() */
 
 /*--------------------------------------------------------------------*/
 
-void* st_insert (SYMTAB *tab, const char *name, int type,
+void* ap_st_insert (SYMTAB *tab, const char *name, int type,
                  unsigned size)
 {                               /* --- insert a symbol */
   unsigned h;                   /* hash value */
@@ -273,7 +273,7 @@ void* st_insert (SYMTAB *tab, const char *name, int type,
   #endif                        /* and set the symbol identifier */
   tab->cnt++;                   /* increment the symbol counter */
   return nel;                   /* return pointer to data field */
-}  /* st_insert() */
+}  /* ap_st_insert() */
 
 /*--------------------------------------------------------------------*/
 
@@ -310,11 +310,11 @@ int st_remove (SYMTAB *tab, const char *name, int type)
 }  /* st_remove() */
 
 /*--------------------------------------------------------------------*/
+/* The problem is: ruby core has a function 'st_lookup'. so now what? */
 
-// The problem is: ruby core has a function 'st_lookup'. so now what?
-void* st_lookup (SYMTAB *tab, const char *name, int type)
+void* ap_st_lookup (SYMTAB *tab, const char *name, int type)
 {                               /* --- look up a symbol */
-  fprintf(stderr, "calling st_lookup\n");
+  fprintf(stderr, "calling ap_st_lookup\n");
   int i;                        /* index of hash bucket */
   STE *ste;                     /* to traverse bucket list */
 
@@ -328,7 +328,7 @@ void* st_lookup (SYMTAB *tab, const char *name, int type)
     ste = ste->succ;            /* otherwise get successor */
   }                             /* in hash bucket */
   return NULL;                  /* return 'not found' */
-}  /* st_lookup() */
+}  /* ap_st_lookup() */
 
 /*--------------------------------------------------------------------*/
 
