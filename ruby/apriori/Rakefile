@@ -10,6 +10,7 @@ task "get_it_done" do
       popd;
   pushd ../../util/src/;
       # rm *.o
+      rm tabscan.o
       make;
       popd;
   pushd Apriori;

@@ -104,6 +104,9 @@ static int _get_item (ITEMSET *iset, FILE *file)
   buf = ts_buf(iset->tscan);    /* read the next field (item name) */
   if ((d == TS_ERR) || (buf[0] == '\0')) return d;
   fprintf(stderr, "calling _get_item\n");
+#ifdef NIMAPFN
+  fprintf(stderr, "NIMAPFN is defined\n");
+#endif
   item = nim_byname(iset->nimap, buf);
   fprintf(stderr, "calling _get_item\n");
   if (!item) {                  /* look up the name in name/id map */

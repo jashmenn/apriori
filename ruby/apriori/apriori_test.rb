@@ -1,7 +1,6 @@
-require 'Apriori/apriori'
-include Apriori
-puts test1
-# => 10
+require 'Apriori/apriori'; include Apriori; puts do_apriori
 
+# ruby -r 'Apriori/apriori' -e 'include Apriori; puts do_apriori'
+# puts test1
+# => 10
 # pp help
-pp do_apriori
