@@ -314,7 +314,6 @@ int st_remove (SYMTAB *tab, const char *name, int type)
 
 void* ap_st_lookup (SYMTAB *tab, const char *name, int type)
 {                               /* --- look up a symbol */
-  fprintf(stderr, "calling ap_st_lookup\n");
   int i;                        /* index of hash bucket */
   STE *ste;                     /* to traverse bucket list */
 

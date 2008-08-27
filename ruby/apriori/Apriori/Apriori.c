@@ -9,28 +9,17 @@ VALUE Apriori = Qnil;
 void Init_mytest();
 
 // Prototype for our method 'test1' - methods are prefixed by 'method_' here
-VALUE method_test1(VALUE self);
-VALUE method_help(VALUE self);
 VALUE method_do_apriori(VALUE self);
+VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
+VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
+VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv); 
 
 // The initialization method for this module
 void Init_apriori() {
 	Apriori = rb_define_module("Apriori");
-	rb_define_method(Apriori, "test1", method_test1, 0);	
-	rb_define_method(Apriori, "help", method_help, 0);	
-	rb_define_method(Apriori, "do_apriori", method_do_apriori, 0);	
-}
-
-// Our 'test1' method.. it simply returns a value of '10' for now.
-VALUE method_test1(VALUE self) {
-	int x = 10;
-	return INT2NUM(x);
-}
-
-VALUE method_help(VALUE self) {
-	int x = 10;
-    help();
-	return INT2NUM(x);
+	rb_define_method(Apriori, "do_apriori",   method_do_apriori, 0);	
+	rb_define_method(Apriori, "test_hash_ap", method_test_hash_ap, 3);
+	rb_define_method(Apriori, "find_association_rules", method_find_association_rules, 3);
 }
 
 VALUE method_do_apriori(VALUE self) {
@@ -45,4 +34,45 @@ VALUE method_do_apriori(VALUE self) {
     do_apriori(3, argv);
 	int x = 10;
 	return INT2NUM(x);
+}
+
+// Our 'test1' method.. it simply returns a value of '10' for now.
+VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts) {
+    //VALUE s = rb_str_new2("hello");
+    VALUE s = rb_str_new2("bye");
+    VALUE val = rb_hash_aref(opts, rb_str_intern(s));
+
+    if(val != Qnil) {
+      return val;
+    } else {
+      return rb_str_new2("nope");
+    }
+}
+
+// Our 'test1' method.. it simply returns a value of '10' for now.
+VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VALUE opts) {
+    VALUE s = rb_str_new2("hello");
+    //VALUE s = rb_str_new2("bye");
+    VALUE val = rb_hash_aref(opts, rb_str_intern(s));
+
+    if(val != Qnil) {
+      return val;
+    } else {
+      return rb_str_new2("nope");
+    }
+}
+
+VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv) {
+  // get an array of ruby strings
+  // convert it to a c array of char *'s
+    VALUE s = rb_str_new2("hello");
+    //VALUE s = rb_str_new2("bye");
+    //VALUE val = rb_hash_aref(opts, rb_str_intern(s));
+
+    /* if(val != Qnil) { */
+    /*   return val; */
+    /* } else { */
+    /*   return rb_str_new2("nope"); */
+    /* } */
+    return Qnil;
 }

@@ -5,13 +5,13 @@ desc "Do everything"
 task "get_it_done" do
   sh "
   pushd ../../apriori/src/;
-      rm *.o;
+      #rm *.o;
       make;
       popd;
   pushd ../../util/src/;
-      rm *.o
-      rm tabscan.o; 
-      rm symtab.o;
+      #rm *.o
+      #rm tabscan.o; 
+      #rm symtab.o;
       make;
       popd;
   pushd Apriori;
@@ -24,7 +24,6 @@ task "get_it_done" do
       ruby -d apriori_test.rb;
       "
 end
-
 
 # working_dir = File.dirname(__FILE__) + "/Apriori"
 
