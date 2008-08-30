@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "ext")
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'apriori'; include Apriori; puts test_converting_array(["apriori", "test/fixtures/sample.txt", "test/fixtures/results.txt"])
 puts
 puts

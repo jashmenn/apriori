@@ -16,7 +16,7 @@ VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VAL
 VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv); 
 
 // The initialization method for this module
-void Init_apriori() {
+void Init_apriori_ext() {
 	Apriori = rb_define_module("Apriori");
 	rb_define_method(Apriori, "do_apriori",   method_do_apriori, 0);	
 	rb_define_method(Apriori, "test_hash_ap", method_test_hash_ap, 3);

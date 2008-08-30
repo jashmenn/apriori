@@ -23,7 +23,7 @@ $CPPFLAGS = " -I#{apriori_root}/util/src -I#{apriori_root}/math/src -I#{apriori_
 # gcc -I. -I/usr/local/lib/ruby/1.8/i686-darwin8.10.1 -I/usr/local/lib/ruby/1.8/i686-darwin8.10.1 -I.  -fno-common -g -O2 -pipe -fno-common  -c apriori_wrapper.c
 
 # Give it a name
-extension_name = 'apriori'
+extension_name = 'apriori_ext'
 
 # The destination
 dir_config(extension_name)
