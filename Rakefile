@@ -1,27 +1,31 @@
 require 'fileutils'
 
+ext_base = File.join(File.dirname(__FILE__), "ext")
+
 desc "Do everything"
 # TODO - need to basically rm them all?
 task "get_it_done" do
   sh "
-  pushd ../../apriori/src/;
-      #rm *.o;
+  pushd #{ext_base}/util/src/;
+      rm *.o
       make;
       popd;
-  pushd ../../util/src/;
-      #rm *.o
-      #rm tabscan.o; 
-      #rm symtab.o;
+  pushd #{ext_base}/math/src;
+      rm *.o
+      # dont need to make this
+      popd;
+  pushd #{ext_base}/apriori/src/;
+      rm *.o;
       make;
       popd;
-  pushd Apriori;
+  pushd #{ext_base};
       rm *.o;
       rm *.bundle;
       rm Makefile;
       ruby extconf.rb;
       make;
       popd;
-      ruby -d apriori_test.rb;
+      ruby -d test/apriori_test.rb;
       "
 end
 

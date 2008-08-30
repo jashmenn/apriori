@@ -1,7 +1,8 @@
 # Loads mkmf which is used to make makefiles for Ruby extensions
 require 'mkmf'
 
-apriori_root = "../../.."
+#apriori_root = "../../.."
+apriori_root = File.dirname(__FILE__)
 
 $objs = ["#{apriori_root}/util/src/vecops.o", 
          "#{apriori_root}/util/src/nimap.o",
