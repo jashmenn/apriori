@@ -10,21 +10,20 @@ VALUE Apriori = Qnil;
 void Init_mytest();
 
 // Prototype for our method 'test1' - methods are prefixed by 'method_' here
-VALUE method_do_apriori(VALUE self);
-VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
+VALUE method_do_test_apriori(VALUE self);
+//VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
 VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
-VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv); 
+VALUE method_ap_do_apriori(VALUE self, VALUE rargv); 
 
 // The initialization method for this module
 void Init_apriori_ext() {
 	Apriori = rb_define_module("Apriori");
-	rb_define_method(Apriori, "do_apriori",   method_do_apriori, 0);	
-	rb_define_method(Apriori, "test_hash_ap", method_test_hash_ap, 3);
-	rb_define_method(Apriori, "find_association_rules", method_find_association_rules, 3);
-	rb_define_method(Apriori, "test_converting_array", method_ap_test_ruby_array, 1);
+	rb_define_method(Apriori, "do_test_apriori",   method_do_test_apriori, 0);	
+	//rb_define_method(Apriori, "test_hash_ap", method_test_hash_ap, 3);
+	rb_define_method(Apriori, "do_apriori", method_ap_do_apriori, 1);
 }
 
-VALUE method_do_apriori(VALUE self) {
+VALUE method_do_test_apriori(VALUE self) {
     char *arg0 = "apriori";
     char *arg1 = "test/sample.txt";
     char *arg2 = "test/results.txt";
@@ -39,6 +38,7 @@ VALUE method_do_apriori(VALUE self) {
 }
 
 // Our 'test1' method.. it simply returns a value of '10' for now.
+/*
 VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts) {
     //VALUE s = rb_str_new2("hello");
     VALUE s = rb_str_new2("bye");
@@ -50,8 +50,10 @@ VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts) {
       return rb_str_new2("nope");
     }
 }
+*/
 
 // Our 'test1' method.. it simply returns a value of '10' for now.
+/*
 VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VALUE opts) {
     VALUE s = rb_str_new2("hello");
     //VALUE s = rb_str_new2("bye");
@@ -63,11 +65,9 @@ VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VAL
       return rb_str_new2("nope");
     }
 }
+*/
 
-#define MAXSTRING       50      /* max no. of strings */
-#define MAXLEN          80      /* max length. of strings */
-
-VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv) {
+VALUE method_ap_do_apriori(VALUE self, VALUE rargv) {
   char **argv; // todo, learn the best practice here
   int i = 0;
   VALUE ary_value;
