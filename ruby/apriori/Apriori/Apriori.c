@@ -1,5 +1,6 @@
 // Include the Ruby headers and goodies
 #include "ruby.h"
+#include "intern.h"
 #include "apriori_wrapper.h"
 
 // Defining a space for information and references about the module to be stored internally
@@ -20,6 +21,7 @@ void Init_apriori() {
 	rb_define_method(Apriori, "do_apriori",   method_do_apriori, 0);	
 	rb_define_method(Apriori, "test_hash_ap", method_test_hash_ap, 3);
 	rb_define_method(Apriori, "find_association_rules", method_find_association_rules, 3);
+	rb_define_method(Apriori, "test_converting_array", method_ap_test_ruby_array, 1);
 }
 
 VALUE method_do_apriori(VALUE self) {
@@ -62,10 +64,49 @@ VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VAL
     }
 }
 
+#define MAXSTRING       50      /* max no. of strings */
+#define MAXLEN          80      /* max length. of strings */
+
 VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv) {
-  // get an array of ruby strings
-  // convert it to a c array of char *'s
-    VALUE s = rb_str_new2("hello");
+  char **argv; // todo, learn the best practice here
+  int i = 0;
+  VALUE ary_value;
+  // get the number of arguments
+  int ruby_argv_length = RARRAY(rargv)->len;
+  // allocate enough memory for a pointer to each char *
+  argv = malloc(ruby_argv_length * sizeof(*argv));
+
+  // copy the ruby array of strings to a c "array of strings"
+  // todo, turn this into a function
+  while((ary_value = rb_ary_shift(rargv)) != Qnil) {
+    argv[i] = malloc(strlen(STR2CSTR(ary_value)) + 1);
+    strcpy(argv[i], STR2CSTR(ary_value));
+    fprintf(stderr, "%s\n", argv[i]);
+    i++;
+  }
+  printf("%d\n", i);
+
+  do_apriori(i, argv);
+
+  /* int j; */
+  /* for(j=0; j<i; j++) { */
+  /*   fprintf(stderr, "%s\n", argv[j]); */
+  /* } */
+
+  // VALUE tmp_argv = rb_ary_new();
+  //do_apriori(i, argv);
+
+  // ok, so you need to figure out how many non-nil values you have,
+  // i guess you could just track it above.
+  // then we're good! we can feed these to the main
+
+//  for(i=0; i < NUM2INT(rb_ary_length(rargv)); i++) {
+//    VALUE argv = rb_ary_new();
+    //fprintf(stderr, STR2CSTR(rb_ary_fetch(1, 1, rargv)));
+//  }
+    // get an array of ruby strings
+    // convert it to a c array of char *'s
+    //
     //VALUE s = rb_str_new2("bye");
     //VALUE val = rb_hash_aref(opts, rb_str_intern(s));
 
