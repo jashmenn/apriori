@@ -1,5 +1,11 @@
-require 'fileutils'
+require 'config/requirements'
+require 'config/hoe' # setup Hoe + all gem configuration
 
+Dir['tasks/**/*.rake'].each { |rake| load rake }
+
+
+# mine
+require 'fileutils'
 ext_base = File.join(File.dirname(__FILE__), "ext")
 
 desc "Do everything"
