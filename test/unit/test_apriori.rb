@@ -5,11 +5,11 @@ class TestApriori < Test::Unit::TestCase
   def setup
   end
 
-  # require 'apriori'; include Apriori; puts test_converting_array(["apriori", "test/fixtures/sample.txt", "test/fixtures/results.txt"])
+  # require 'apriori'; include Apriori; puts do_apriori(["apriori", "test/fixtures/sample.txt", "test/fixtures/results.txt"])
   
   def test_truth
-    input = File.join(FIXTURES_DIR + "test/fixtures/market_basket_string_test.txt")
-    pp Apriori.find_itemsets(input, :appearances => true)
+    input = File.join(FIXTURES_DIR + "/market_basket_string_test.txt")
+    pp Apriori.find_itemsets(input, :output_file => "results.txt", :appearances => true)
 
   end
 end

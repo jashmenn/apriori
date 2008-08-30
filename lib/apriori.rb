@@ -22,13 +22,30 @@
 
 $: << File.expand_path(File.join(File.dirname(__FILE__), "../ext"))
 require 'apriori_ext'
-
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
+require 'tempfile'
+require 'apriori/adapter'
+
 module Apriori
-  class << self
-    # Find itemsets
-    def find_itemsets(input, opts={})
+  # Find itemsets
+  def self.find_itemsets(input, opts={})
+
+    # this will probably become refactored out and then use a block b/c most
+    # of the setup is always the same
+    adapter = Adapter.new
+    args = [input]
+    output_file = nil
+
+    # create an output file somewhere
+    if opts[:output_file]
+      output_file = opts[:output_file] 
+    else
+      raise "todo"
     end
+    args << output_file
+
+    adapter.call_apriori_with_arguments(args)
   end
+
 end
