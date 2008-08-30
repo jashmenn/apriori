@@ -81,15 +81,41 @@ VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv) {
   while((ary_value = rb_ary_shift(rargv)) != Qnil) {
     argv[i] = malloc(strlen(STR2CSTR(ary_value)) + 1);
     strcpy(argv[i], STR2CSTR(ary_value));
+    i++;
+  }
+  do_apriori(i, argv);
+  return Qnil;
+}
+
+/*
+VALUE better_method_ap_test_ruby_array(VALUE self, VALUE rargv) {
+  char **argv;
+  int i = 3;
+  argv = (char **)convert_rb_ary_strings_to_c_ary_strings(rargv);
+  do_apriori(i, argv);
+}
+
+char **convert_rb_ary_strings_to_c_ary_strings(VALUE rary) {
+  char **argv; // todo, learn the best practice here
+  int i = 0;
+  VALUE ary_value;
+  // get the number of arguments
+  int ruby_argv_length = RARRAY(rary)->len;
+  // allocate enough memory for a pointer to each char *
+  argv = malloc(ruby_argv_length * sizeof(*argv));
+
+  // copy the ruby array of strings to a c "array of strings"
+  // todo, turn this into a function
+  while((ary_value = rb_ary_shift(rary)) != Qnil) {
+    argv[i] = malloc(strlen(STR2CSTR(ary_value)) + 1);
+    strcpy(argv[i], STR2CSTR(ary_value));
     fprintf(stderr, "%s\n", argv[i]);
     i++;
   }
   printf("%d\n", i);
-
-  do_apriori(i, argv);
-
-    return Qnil;
+  return argv;
 }
+*/
 
 void asdf_junk_box() {
   /* int j; */
