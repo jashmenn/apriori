@@ -88,6 +88,10 @@ VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv) {
 
   do_apriori(i, argv);
 
+    return Qnil;
+}
+
+void asdf_junk_box() {
   /* int j; */
   /* for(j=0; j<i; j++) { */
   /*   fprintf(stderr, "%s\n", argv[j]); */
@@ -115,5 +119,5 @@ VALUE method_ap_test_ruby_array(VALUE self, VALUE rargv) {
     /* } else { */
     /*   return rb_str_new2("nope"); */
     /* } */
-    return Qnil;
+  return;
 }
