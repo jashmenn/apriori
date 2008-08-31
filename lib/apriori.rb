@@ -29,6 +29,11 @@ require 'apriori/adapter'
 
 module Apriori
   # Find itemsets
+  # :min_items      minimal number of items per set/rule/hyperedge (default: 1)
+  # :max_items      maximal number of items per set/rule/hyperedge (default: no limit)
+  # :min_support    minimal support    of a     set/rule/hyperedge (default: 10%)
+  # :max_support    maximal support    of a     set/rule/hyperedge (default: 100%)
+  # :min_confidence minimal confidence of a         rule/hyperedge (default: 80%)
   def self.find_itemsets(input, opts={})
 
     # this will probably become refactored out and then use a block b/c most
@@ -41,9 +46,23 @@ module Apriori
     if opts[:output_file]
       output_file = opts[:output_file] 
     else
-      raise "todo"
+      raise "TODO"
     end
     args << output_file
+
+    # :min_items => 1,
+    # :max_items => 5,
+    # :min_support => 1, 
+    # :max_support => 100, 
+    # :min_confidence => 20
+
+    args << "-m#{opts[:min_items]}"      if opts[:min_items]
+    args << "-n#{opts[:max_items]}"      if opts[:max_items]
+    args << "-s#{opts[:min_support]}"    if opts[:min_support]
+    args << "-S#{opts[:max_support]}"    if opts[:max_support]
+    args << "-c#{opts[:min_confidence]}" if opts[:min_confidence]
+
+    args << "-a"
 
     adapter.call_apriori_with_arguments(args)
   end

@@ -19,7 +19,6 @@ VALUE method_ap_do_apriori(VALUE self, VALUE rargv);
 void Init_apriori_ext() {
 	Apriori = rb_define_module("Apriori");
 	rb_define_method(Apriori, "do_test_apriori",   method_do_test_apriori, 0);	
-	//rb_define_method(Apriori, "test_hash_ap", method_test_hash_ap, 3);
 	rb_define_method(Apriori, "do_apriori", method_ap_do_apriori, 1);
 }
 
