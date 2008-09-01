@@ -7,15 +7,14 @@ class TestApriori < Test::Unit::TestCase
 
   # require 'apriori'; include Apriori; puts do_apriori(["apriori", "test/fixtures/sample.txt", "test/fixtures/results.txt"])
   
-  def dont_test_truth
+  def test_truth
     input = File.join(FIXTURES_DIR + "/market_basket_string_test.txt")
-    pp Apriori.find_itemsets(input, :output_file => "results.txt")
+    assert rules = Apriori.find_itemsets(input)
   end
 
-  def dont_test_calling_all_the_options
+  def test_calling_all_the_options
     input = File.join(FIXTURES_DIR + "/market_basket_string_test.txt")
-    pp Apriori.find_itemsets(input, 
-                              :output_file => "results2.txt",
+    assert rules = Apriori.find_itemsets(input, 
                               :min_items => 2,
                               :max_items => 5,
                               :min_support => 1, 
@@ -37,10 +36,11 @@ class TestApriori < Test::Unit::TestCase
                               :min_support => 1, 
                               :max_support => 100, 
                               :min_confidence => 20)
-    assert is = Apriori::AssociationRule.parse_line("apple <- doritos  (50.0/3, 33.3)")
+
+    assert is = Apriori::AssociationRule.parse_line("apple <- cheese (50.0/3, 100.0)")
     assert rules.include?(is)
 
-    puts rules.join("\n")
+    # puts rules.join("\n")
   end
 
 end
