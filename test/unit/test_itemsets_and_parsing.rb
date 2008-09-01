@@ -11,12 +11,6 @@ class TestItemsetsAndParsingApriori < Test::Unit::TestCase
   end
 
   def test_parsing_individual_lines
-    # doritos <- beer  (33.3/2, 100.0)
-    # apple <- doritos  (50.0/3, 33.3)
-    # cheese <- apple  (66.7/4, 75.0)
-    # foo <- bar baz  (66.7/4, 75.0)
-    # foo <- bar baz bangle (66.7/4, 75.0)
-
     assert is = Itemset.parse_line("doritos <- beer  (33.3/2, 100.0)")
     wanted = {
       :consequent => "doritos",

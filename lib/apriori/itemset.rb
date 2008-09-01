@@ -1,4 +1,11 @@
 module Apriori
+
+  # this is totally wrong
+  # this class is "Association Rule"
+  # an "itemset" is different. An itemset is just that, a set of items.
+  # rename the class to AssociationRule. the things below parse an association
+  # rule, which contains two itemsets, "antecendent" and "consequent"
+  # whoops.
   class Itemset
     attr_accessor :antecedent
     attr_accessor :num_antecedent_transactions
@@ -8,7 +15,10 @@ module Apriori
     attr_accessor :confidence
 
     class << self
-      def from_file(file)
+      # Given +filename+ of a file containing itemset information returns an
+      # Array of +Itemset+s. File format must match that of #parse_line. 
+      def from_file(filename)
+        itemsets = 
       end
 
       # Given +line+ returns an Itemset 
