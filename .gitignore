@@ -4,3 +4,5 @@
 .DS_Store
 swig/Makefile
 ruby/apriori/test/results.txt
+doc
+doc/*
