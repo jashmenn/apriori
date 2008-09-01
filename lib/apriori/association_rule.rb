@@ -1,12 +1,7 @@
 module Apriori
 
-  # this is totally wrong
-  # this class is "Association Rule"
-  # an "itemset" is different. An itemset is just that, a set of items.
-  # rename the class to AssociationRule. the things below parse an association
-  # rule, which contains two itemsets, "antecendent" and "consequent"
-  # whoops.
-  class Itemset
+  #  contains two itemsets, "antecendent" and "consequent"
+  class AssociationRule
     attr_accessor :antecedent
     attr_accessor :num_antecedent_transactions
     attr_accessor :support
@@ -18,14 +13,19 @@ module Apriori
       # Given +filename+ of a file containing itemset information returns an
       # Array of +Itemset+s. File format must match that of #parse_line. 
       def from_file(filename)
-        itemsets = 
+        rules = []
+        contents = File.read(filename)
+        contents.each_line do |line|
+          rules << parse_line(line)
+        end
+        rules
       end
 
       # Given +line+ returns an Itemset 
       # Example of a line:
       #   foo <- bar baz bangle (66.7/4, 75.0)
       def parse_line(line)
-        is = Itemset.new
+        is = new
         line =~ /(.+)\s+<-\s+(.+?)\s+\((\d+\.\d)(?:\/(\d+))?,\s+(\d+\.\d)\)/
         consequent, antecedent, support, transactions, confidence = $1, $2, $3, $4, $5
         is.consequent = consequent 
@@ -36,5 +36,13 @@ module Apriori
         is
       end
     end
+
+    def to_s
+      "%s <- %s (%0.01f%s, %0.01f)" % [ consequent, 
+        antecedent.join(" "), 
+        support, 
+        num_antecedent_transactions ? "/#{num_antecedent_transactions}" : "", confidence ]
+    end
+
   end
 end

@@ -26,7 +26,7 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) ||
 
 require 'tempfile'
 require 'apriori/adapter'
-require 'apriori/itemset'
+require 'apriori/association_rule'
 
 module Apriori
   # Find itemsets

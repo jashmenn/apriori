@@ -1,17 +1,20 @@
 require File.dirname(__FILE__) + '/../test_helper.rb'
 
-class TestItemsetsAndParsingApriori < Test::Unit::TestCase
+class TestAssociationRulesAndParsingApriori < Test::Unit::TestCase
   include Apriori
 
   def setup
   end
 
-  def don_test_calling_all_the_options
-    input = File.join(FIXTURES_DIR + "/market_basket_string_test.txt")
+  def test_reading_from_a_file
+    input = File.join(FIXTURES_DIR + "/market_basket_results_test.txt")
+    assert rules = AssociationRule.from_file(input)
+    assert_equal 5, rules.size
+    pp rules
   end
 
   def test_parsing_individual_lines
-    assert is = Itemset.parse_line("doritos <- beer  (33.3/2, 100.0)")
+    assert is = AssociationRule.parse_line("doritos <- beer  (33.3/2, 100.0)")
     wanted = {
       :consequent => "doritos",
       :antecedent => ["beer"],
@@ -22,8 +25,9 @@ class TestItemsetsAndParsingApriori < Test::Unit::TestCase
     wanted.each do |key,value|
       assert_equal value, is.send(key), "Expected itemset '#{key}' to be '#{value}'"
     end
+    assert_equal "doritos <- beer (33.3/2, 100.0)", is.to_s
 
-    assert is = Itemset.parse_line("apple <- doritos  (50.0/3, 33.3)")
+    assert is = AssociationRule.parse_line("apple <- doritos  (50.0/3, 33.3)")
     wanted = {
       :consequent => "apple",
       :antecedent => ["doritos"],
@@ -34,8 +38,9 @@ class TestItemsetsAndParsingApriori < Test::Unit::TestCase
     wanted.each do |key,value|
       assert_equal value, is.send(key), "Expected itemset '#{key}' to be '#{value}'"
     end
+    assert_equal "apple <- doritos (50.0/3, 33.3)", is.to_s
 
-    assert is = Itemset.parse_line("foo <- bar baz  (66.7, 75.0)")
+    assert is = AssociationRule.parse_line("foo <- bar baz  (66.7, 75.0)")
     wanted = {
       :consequent => "foo",
       :antecedent => ["bar", "baz"],
@@ -46,9 +51,10 @@ class TestItemsetsAndParsingApriori < Test::Unit::TestCase
     wanted.each do |key,value|
       assert_equal value, is.send(key), "Expected itemset '#{key}' to be '#{value}'"
     end
+    assert_equal "foo <- bar baz (66.7, 75.0)", is.to_s
 
     # foo <- bar baz bangle (66.7/4, 75.0)
-    assert is = Itemset.parse_line("foo <- bar baz bangle (66.7/4, 75.0)")
+    assert is = AssociationRule.parse_line("foo <- bar baz bangle (66.7/4, 75.0)")
     wanted = {
       :consequent => "foo",
       :antecedent => ["bar", "baz", "bangle"],
@@ -59,6 +65,7 @@ class TestItemsetsAndParsingApriori < Test::Unit::TestCase
     wanted.each do |key,value|
       assert_equal value, is.send(key), "Expected itemset '#{key}' to be '#{value}'"
     end
+    assert_equal "foo <- bar baz bangle (66.7/4, 75.0)", is.to_s
 
 
   end
