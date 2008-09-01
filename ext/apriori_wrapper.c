@@ -273,6 +273,7 @@ int do_apriori (int argc, char *argv[])
   int    tacnt;                 /* number of transactions */
   int    frq;                   /* frequency of an item set */
   int    *map, *set;            /* identifier map, item set */
+  int    verbose  = 0;          /* flag for verboseness */
   const  char *name;            /* buffer for item names */
   static char buf[4*TS_SIZE+4]; /* buffer for formatting */
   clock_t     t, tt, tc, x;     /* timer for measurements */
@@ -341,6 +342,8 @@ int do_apriori (int argc, char *argv[])
     printf("-b/f/r#  blank characters, field and record separators\n"
            "         (default: \" \\t\\r\", \" \\t\", \"\\n\")\n");
     printf("-C#      comment characters (default: \"#\")\n");
+    printf("-V       verbose\n");
+
     printf("infile   file to read transactions from\n");
     printf("outfile  file to write item sets/association rules"
                     "/hyperedges to\n");
@@ -383,6 +386,7 @@ int do_apriori (int argc, char *argv[])
           case 'f': optarg = &fldseps;              break;
           case 'r': optarg = &recseps;              break;
           case 'C': optarg = &comment;              break;
+          case 'V': verbose = 1;                    break;
           default : error(E_OPTION, *--s);          break;
         }                       /* set option variables */
         if (optarg && *s) { *optarg = s; optarg = NULL; break; }
