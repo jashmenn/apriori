@@ -44,5 +44,22 @@ module Apriori
         num_antecedent_transactions ? "/#{num_antecedent_transactions}" : "", confidence ]
     end
 
+    def eql?(object)
+      self == (object)
+    end
+
+    def ==(object)
+      return true if object.equal?(self)
+      if object.instance_of?(self.class)
+        %w{antecedent num_antecedent_transactions 
+           support consequent confidence}.each do |key|
+          return false unless object.send(key) == self.send(key)
+        end
+        return true
+      else
+        return false
+      end
+    end
+
   end
 end

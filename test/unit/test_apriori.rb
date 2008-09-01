@@ -31,13 +31,16 @@ class TestApriori < Test::Unit::TestCase
                       %w{apple cheese}, 
                       %w{apple doritos} ]
 
-    pp Apriori.find_itemsets(transactions,
-                              :output_file => "results2.txt",
+    rules = Apriori.find_itemsets(transactions,
                               :min_items => 2,
                               :max_items => 5,
                               :min_support => 1, 
                               :max_support => 100, 
                               :min_confidence => 20)
+    assert is = Apriori::AssociationRule.parse_line("apple <- doritos  (50.0/3, 33.3)")
+    assert rules.include?(is)
+
+    puts rules.join("\n")
   end
 
 end

@@ -10,7 +10,11 @@ class TestAssociationRulesAndParsingApriori < Test::Unit::TestCase
     input = File.join(FIXTURES_DIR + "/market_basket_results_test.txt")
     assert rules = AssociationRule.from_file(input)
     assert_equal 5, rules.size
-    pp rules
+
+    assert is = AssociationRule.parse_line("apple <- doritos  (50.0/3, 33.3)")
+    assert rules.include?(is)
+    assert is = AssociationRule.parse_line("foo <- bar baz bangle (66.7/4, 75.0)")
+    assert rules.include?(is)
   end
 
   def test_parsing_individual_lines
@@ -66,8 +70,12 @@ class TestAssociationRulesAndParsingApriori < Test::Unit::TestCase
       assert_equal value, is.send(key), "Expected itemset '#{key}' to be '#{value}'"
     end
     assert_equal "foo <- bar baz bangle (66.7/4, 75.0)", is.to_s
+  end
 
-
+  def test_association_rule_equality
+    assert is  = AssociationRule.parse_line("doritos <- beer  (33.3/2, 100.0)")
+    assert is2 = AssociationRule.parse_line("doritos <- beer  (33.3/2, 100.0)")
+    assert_equal is, is2
   end
 
 

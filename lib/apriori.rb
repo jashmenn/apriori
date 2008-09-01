@@ -57,15 +57,11 @@ module Apriori
     if opts[:output_file]
       output_file = opts[:output_file] 
     else
-      raise "TODO"
+      tempfile = Tempfile.new("transactions_results_#{$!}_#{rand.to_s}")
+      tempfile.close # starts open
+      output_file = tempfile.path
     end
     args << output_file
-
-    # :min_items => 1,
-    # :max_items => 5,
-    # :min_support => 1, 
-    # :max_support => 100, 
-    # :min_confidence => 20
 
     args << "-m#{opts[:min_items]}"      if opts[:min_items]
     args << "-n#{opts[:max_items]}"      if opts[:max_items]
@@ -77,6 +73,12 @@ module Apriori
 
     adapter = Adapter.new
     adapter.call_apriori_with_arguments(args)
+
+    if opts[:output_file]
+      return output_file
+    else
+      return AssociationRule.from_file(output_file)
+    end
   end
 
   private
