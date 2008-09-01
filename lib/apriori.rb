@@ -26,6 +26,7 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) ||
 
 require 'tempfile'
 require 'apriori/adapter'
+require 'apriori/itemset'
 
 module Apriori
   # Find itemsets
@@ -34,15 +35,25 @@ module Apriori
   # :min_support    minimal support    of a     set/rule/hyperedge (default: 10%)
   # :max_support    maximal support    of a     set/rule/hyperedge (default: 100%)
   # :min_confidence minimal confidence of a         rule/hyperedge (default: 80%)
+  #
+  #
+  # this will probably become refactored out and then use a block b/c most
+  # of the setup is always the same
   def self.find_itemsets(input, opts={})
-
-    # this will probably become refactored out and then use a block b/c most
-    # of the setup is always the same
-    adapter = Adapter.new
-    args = [input]
-    output_file = nil
+    args = []
+    
+    # create the input file
+    if input.kind_of?(String)
+      args << input
+    elsif input.kind_of?(Array)
+      tempfile = create_temporary_file_from_transactions(input)
+      args << tempfile.path
+    else
+      raise "unknown input"
+    end
 
     # create an output file somewhere
+    output_file = nil
     if opts[:output_file]
       output_file = opts[:output_file] 
     else
@@ -64,7 +75,18 @@ module Apriori
 
     args << "-a"
 
+    adapter = Adapter.new
     adapter.call_apriori_with_arguments(args)
+  end
+
+  private
+  def self.create_temporary_file_from_transactions(transactions)
+    tempfile = Tempfile.open("transactions_#{$!}_#{rand.to_s}")
+    transactions.each do |transaction|
+      tempfile.puts transaction.join(" ")
+    end
+    tempfile.close
+    tempfile
   end
 
 end

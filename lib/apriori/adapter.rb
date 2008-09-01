@@ -4,7 +4,7 @@ module Apriori
     include Apriori
 
     # call the actual apriori extension
-    def call_apriori_with_arguments(args) #:nodoc:
+    def call_apriori_with_arguments(args, opts={}) #:nodoc:
       args.unshift("apriori")
       do_apriori(args)
     end
