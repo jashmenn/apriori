@@ -1,0 +1,7 @@
+These are things todo:
+
++ Clean up licensing everywhere
+* Clean up documentation
+* make a ruby gem
++ get the typical install to work
+* clean up the rakefile

@@ -3,7 +3,7 @@ SHELL = /bin/sh
 
 #### Start of system configuration section. ####
 
-srcdir = .
+srcdir = /Users/nathan/Programming/datamining/apriori/ext
 topdir = /usr/local/lib/ruby/1.8/i686-darwin8.10.1
 hdrdir = $(topdir)
 VPATH = $(srcdir):$(topdir):$(hdrdir)
@@ -43,7 +43,7 @@ LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
 RUBY_EXTCONF_H = 
 CFLAGS   =  -fno-common -g -O2 -pipe -fno-common 
 INCFLAGS = -I. -I$(topdir) -I$(hdrdir) -I$(srcdir)
-CPPFLAGS =   -I./util/src -I./math/src -I./apriori/src 
+CPPFLAGS =   -I/Users/nathan/Programming/datamining/apriori/ext/util/src -I/Users/nathan/Programming/datamining/apriori/ext/math/src -I/Users/nathan/Programming/datamining/apriori/ext/apriori/src 
 CXXFLAGS = $(CFLAGS) 
 DLDFLAGS =   
 LDSHARED = cc -dynamic -bundle -undefined suppress -flat_namespace
@@ -81,7 +81,7 @@ target_prefix =
 LOCAL_LIBS = 
 LIBS =   -ldl -lobjc  
 SRCS = vecops.c nimap.c tabscan.c scform.c gamma.c chi2.c tract.c istree.c apriori_wrapper.c Apriori.c
-OBJS = ./util/src/vecops.o ./util/src/nimap.o ./util/src/tabscan.o ./util/src/scform.o ./math/src/gamma.o ./math/src/chi2.o ./apriori/src/tract.o ./apriori/src/istree.o apriori_wrapper.o Apriori.o
+OBJS = /Users/nathan/Programming/datamining/apriori/ext/util/src/vecops.o /Users/nathan/Programming/datamining/apriori/ext/util/src/nimap.o /Users/nathan/Programming/datamining/apriori/ext/util/src/tabscan.o /Users/nathan/Programming/datamining/apriori/ext/util/src/scform.o /Users/nathan/Programming/datamining/apriori/ext/math/src/gamma.o /Users/nathan/Programming/datamining/apriori/ext/math/src/chi2.o /Users/nathan/Programming/datamining/apriori/ext/apriori/src/tract.o /Users/nathan/Programming/datamining/apriori/ext/apriori/src/istree.o apriori_wrapper.o Apriori.o
 TARGET = apriori_ext
 DLLIB = $(TARGET).bundle
 EXTSTATIC = 
