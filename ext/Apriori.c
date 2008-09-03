@@ -12,7 +12,8 @@ void Init_mytest();
 // Prototype for our method 'test1' - methods are prefixed by 'method_' here
 VALUE method_do_test_apriori(VALUE self);
 //VALUE method_test_hash_ap(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
-VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
+//VALUE method_find_association_rules(VALUE self, VALUE filein, VALUE fileout, VALUE opts);
+
 VALUE method_ap_do_apriori(VALUE self, VALUE rargv); 
 
 // The initialization method for this module

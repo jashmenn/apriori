@@ -39,7 +39,7 @@ module Apriori
   #
   # this will probably become refactored out and then use a block b/c most
   # of the setup is always the same
-  def self.find_itemsets(input, opts={})
+  def self.find_association_rules(input, opts={})
     args = []
     
     # create the input file
