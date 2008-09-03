@@ -1,5 +1,6 @@
 = apriori
 
+Apriori C code by Christian Borgelt. Taken directly from: todo, url
 * FIX (url)
 
 == DESCRIPTION:
@@ -13,6 +14,12 @@ FIX (describe your package)
 == SYNOPSIS:
 
   FIX (code sample of usage)
+
+== EXAMPLE DATA:
+
+http://fimi.cs.helsinki.fi/data/
+http://fimi.cs.helsinki.fi/data/kosarak.dat
+http://fimi.cs.helsinki.fi/data/retail.dat
 
 == REQUIREMENTS:
 
@@ -57,45 +64,6 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 =========================================================================
-
-Apriori C code by Christian Borgelt. Taken directly from: todo, url
-
-overview:
-  apriori/     - christian's apriori code (i'm currently debugging it for ruby purposes, but it will eventually be all the original)
-  math/, util/ - christian's supporting code
-  swig/        - my initial attempt at a swig wrapper, it doesnt work at all
-  ruby/
-    - test/    - a "hello world" of ruby c extensions
-    - apriori  - this is where most of my work is
-
-So to try it out:
-
-  cd ruby/apriori
-  rake get_it_done 
-
-This will build the extension and run the "test"
-
-Nate Murray
-nate@natemurray.com
-
-
-notes...
-
-= What options we are going to support at first:
-* at first, association rules
-
-:min_items      -m#      minimal number of items per set/rule/hyperedge (default: 1)
-:max_items      -n#      maximal number of items per set/rule/hyperedge (default: no limit)
-:min_support    -s#      minimal support    of a     set/rule/hyperedge (default: 10%)
-:max_support    -S#      maximal support    of a     set/rule/hyperedge (default: 100%)
-:min_confidence -c#      minimal confidence of a         rule/hyperedge (default: 80%)
-
-:show_absolute_support (bool) -a       print absolute support (number of transactions)
-
-infile          infile   file to read transactions from
-outfile         outfile  file to write item sets/association rules/hyperedges to
-
-puts find_association_rules(infile, outfile, opts={})
 
 = What options to support later:
 

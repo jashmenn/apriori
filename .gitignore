@@ -7,3 +7,7 @@ ruby/apriori/test/results.txt
 doc
 doc/*
 .config
+examples/test_data/accidents.dat
+examples/test_data/chess.dat
+examples/test_data/kosarak.dat
+examples/test_data/retail.dat

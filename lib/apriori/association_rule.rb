@@ -14,9 +14,14 @@ module Apriori
       # Array of +Itemset+s. File format must match that of #parse_line. 
       def from_file(filename)
         rules = []
+        begin
         contents = File.read(filename)
         contents.each_line do |line|
           rules << parse_line(line)
+        end
+        rescue => e
+          puts "Error reading: #{filename}"
+          puts e
         end
         rules
       end

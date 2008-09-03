@@ -1,13 +1,15 @@
 == 0.0.1 2008-09-02
-+ refactor find_itemsets to be find_association_rules
 
 * make a ruby gem
+* deal with association rules that only have 1 item
 
 + Clean up documentation
   * README.txt
+  * create example files
   + apriori.rb
-  * create an example file
 
 + Clean up licensing everywhere
 + get the typical install to work
 + clean up the rakefile
++ refactor find_itemsets to be find_association_rules
+
