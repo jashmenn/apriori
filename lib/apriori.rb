@@ -30,10 +30,10 @@ require 'apriori/association_rule'
 
 module Apriori
   # Find association rules. Given +input+ and +opts+ returns an Array of AssociationRules.
-  # See README.txt if you are unsure as to why you would want to do this.
+  # See README.txt if you are unsure why you would want to do this.
   #
-  # +input+ can be an Array of Array's of String objects or a String specifing the path
-  #   from which to to read the transactions.
+  # +input+ can be an Array of Array's of String objects or a String specifing
+  # a path a transactions file.
   # 
   # The options are:
   #
@@ -53,7 +53,7 @@ module Apriori
   #
   # In this example, we call #find_association_rules with the default options.
   #
-  #    transactions = [  %w{beer doritos},
+  #    transactions = [ %w{beer doritos},
   #                     %w{apple cheese},
   #                     %w{apple cheese},
   #                     %w{apple doritos} ]
