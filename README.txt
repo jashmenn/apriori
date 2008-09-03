@@ -1,6 +1,21 @@
 = apriori
 
+Apriori is an algorithm that is designed to perform association rule induction.
+
+The goal is to find regularities in the shopping behavior of customers. The idea is that 
+customers often buy similar products together. If it 
+
+
+  <i>market basket analysis</i>.
+
+todo - reword below, taken from christian's doc
+
+Association rule induction [Agrawal et al. 1993] is a powerful method for so-called market basket analysis, which aims at finding regularities in the shopping behavior of customers of supermarkets, mail-order companies and the like. With the induction of association rules one tries to find sets of products that are frequently bought together, so that from the presence of certain products in a shopping cart one can infer (with a high probability) that certain other products are present. Such information, expressed in the form of rules, can often be used to increase the number of items sold, for instance, by appropriately arranging the products in the shelves of a supermarket (they may, for example, be placed adjacent to each other in order to invite even more customers to buy them together) or by directly suggesting items to a customer, which may be of interest for him/her.
+
+An association rule is a rule like "If a customer buys wine and bread, he often buys cheese, too." It expresses an association between (sets of) items, which may be products of a supermarket or a mail-order company, special equipment options of a car, optional services offered by telecommunication companies etc. An association rule states that if we pick a customer at random and find out that he selected certain items (bought certain products, chose certain options etc.), we can be confident, quantified by a percentage, that he also selected certain other items (bought certain other products, chose certain other options etc.).
+
 Apriori C code by Christian Borgelt. Taken directly from: todo, url
+
 * FIX (url)
 
 == DESCRIPTION:
