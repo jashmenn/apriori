@@ -5,7 +5,7 @@
 
 + Clean up documentation
   * README.txt
-  * create example files
+  + create example files
   + apriori.rb
 
 + Clean up licensing everywhere
