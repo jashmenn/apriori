@@ -29,16 +29,55 @@ require 'apriori/adapter'
 require 'apriori/association_rule'
 
 module Apriori
-  # Find itemsets
-  # :min_items      minimal number of items per set/rule/hyperedge (default: 1)
-  # :max_items      maximal number of items per set/rule/hyperedge (default: no limit)
-  # :min_support    minimal support    of a     set/rule/hyperedge (default: 10%)
-  # :max_support    maximal support    of a     set/rule/hyperedge (default: 100%)
-  # :min_confidence minimal confidence of a         rule/hyperedge (default: 80%)
+  # Find association rules. Given +input+ and +opts+ returns an Array of AssociationRules.
+  # See README.txt if you are unsure as to why you would want to do this.
   #
+  # +input+ can be an Array of Array's of String objects or a String specifing the path
+  #   from which to to read the transactions.
+  # 
+  # The options are:
   #
-  # this will probably become refactored out and then use a block b/c most
-  # of the setup is always the same
+  # * <tt>:min_items</tt>: minimal number of items per rule (default: 1)
+  # * <tt>:max_items</tt>: maximal number of items per rule (default: no limit)
+  # * <tt>:min_support</tt>: minimal support of a rule (default: 10 (percent %))
+  # * <tt>:max_support</tt>: maximal support of a rule (default: 100 (percent %))
+  # * <tt>:min_confidence</tt>: minimal confidence of a rule (default: 80 (percent %))
+  # * <tt>:output_file</tt>: write the rules to this file instead of returning
+  #   AssociationRule objects. If this option is specified the path to this file is returned
+  #
+  # Examples:
+  # 
+  # This first example passes in an Array of Arrays of Strings. The idea is
+  # that each individual Array of Strings is a transaction and the containing
+  # Array is the set of all transactions. 
+  #
+  # In this example, we call #find_association_rules with the default options.
+  #
+  #    transactions = [  %w{beer doritos},
+  #                     %w{apple cheese},
+  #                     %w{apple cheese},
+  #                     %w{apple doritos} ]
+  #
+  #    rules = Apriori.find_association_rules(transactions)
+  #
+  # In this example we read the transactions from a file. The format of the file
+  # is one transaction per line, space separated items. For instance:
+  #
+  #    # save to /path/to/some/file.txt
+  #    beer doritos
+  #    apple cheese
+  #    apple cheese
+  #    apple doritos
+  #
+  # Here is how to call it, using many options:
+  # 
+  #    rules = Apriori.find_association_rules("/path/to/some/file.txt",
+  #                     :min_items => 2,
+  #                     :max_items => 2,
+  #                     :min_support => 0.01, 
+  #                     :max_support => 100, 
+  #                     :min_confidence => 20)
+  #
   def self.find_association_rules(input, opts={})
     args = []
     

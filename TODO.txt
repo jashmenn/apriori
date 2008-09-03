@@ -1,6 +1,5 @@
-These are things todo:
-
-* refactor find_itemsets to be find_association_rules
+== 0.0.1 2008-09-02
++ refactor find_itemsets to be find_association_rules
 
 * Clean up documentation
   * README.txt
