@@ -1,9 +1,13 @@
 = apriori
 
-* This project can be found at: 
+* This project can be found at: http://github.com/jashmenn/apriori/tree/master
 * Christian Borgelt's original C code can be found at: http://www.borgelt.net/apriori.html
 
 == DESCRIPTION:
+
+Ruby Apriori is a library to efficiently find item association rules within
+large sets of transactions. This library provides a Ruby interface to Christian
+Borgelt's C implementation of this algorithm.
 
 From Christian Borgelt's Apriori:http://www.borgelt.net/apriori.html documentation: 
 
@@ -28,6 +32,15 @@ From Christian Borgelt's Apriori:http://www.borgelt.net/apriori.html documentati
 This ruby library provides a convenient way to use this algorithm from Ruby.
 
 Original Apriori C code by Christian Borgelt. 
+
+== THE ALGORITHM:
+
+This document is not an introduction to the Apriori algorithm. To find out more about Apriori see:
+
+* http://www.borgelt.net/papers/cstat_02.pdf
+* http://www.borgelt.net/papers/fimi_03.pdf
+* http://www.borgelt.net/apriori.html
+* http://en.wikipedia.org/wiki/Apriori_algorithm
 
 == FEATURES:
 
@@ -66,10 +79,6 @@ See the +examples+ directory for more examples of usage.
 Example data can be found at:
 
 http://fimi.cs.helsinki.fi/data/
-
-http://fimi.cs.helsinki.fi/data/kosarak.dat
-
-http://fimi.cs.helsinki.fi/data/retail.dat
 
 == REQUIREMENTS:
 
