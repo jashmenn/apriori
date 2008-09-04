@@ -35,7 +35,7 @@ Original Apriori C code by Christian Borgelt.
 
 h2. Installing
 
-<pre syntax="ruby">sudo gem install apriori</pre>
+<pre syntax="ruby">gem install --source http://gems.github.com jashmenn-apriori</pre>
 
 h2. The Algorithm:
 

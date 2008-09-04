@@ -100,7 +100,7 @@ at: http://www.borgelt.net/apriori.html
 
 == INSTALL:
 
-* sudo gem install apriori
+* gem install --source http://gems.github.com jashmenn-apriori
 
 == LICENSE:
 
