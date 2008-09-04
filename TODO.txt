@@ -2,6 +2,10 @@
 * make a ruby gem
 * deal with association rules that only have 1 item
 
+* newgem thoughts:
+  * Ability for README.txt and website to be the same thing
+  * syntax highlighting on website
+
 == 0.0.1 2008-09-02
 
 + Clean up documentation

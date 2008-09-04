@@ -29,7 +29,7 @@ From Christian Borgelt's Apriori:http://www.borgelt.net/apriori.html documentati
   certain other items (bought certain other products, chose certain other options
   etc.).
 
-This ruby library provides a convenient way to use this algorithm from Ruby.
+This Ruby library provides a convenient way to use this algorithm from Ruby.
 
 Original Apriori C code by Christian Borgelt. 
 
@@ -67,6 +67,15 @@ This document is not an introduction to the Apriori algorithm. To find out more 
 
   puts rules.join("\n")
 
+  # Results: 
+  # doritos <- beer (33.3/2, 100.0)
+  # beer <- doritos (50.0/3, 66.7)
+  # apple <- doritos (50.0/3, 33.3)
+  # doritos <- apple (66.7/4, 25.0)
+  # apple <- cheese (50.0/3, 100.0)
+  # cheese <- apple (66.7/4, 75.0)
+
+  # NOTE:
   # doritos <- beer (33.3/2, 100.0)
   # means: 
   # * beer appears in 33.3% (2 total) of the transactions (the support)
