@@ -1,48 +1,88 @@
 = apriori
 
-Apriori is an algorithm that is designed to perform association rule induction.
-
-The goal is to find regularities in the shopping behavior of customers. The idea is that 
-customers often buy similar products together. If it 
-
-
-  <i>market basket analysis</i>.
-
-todo - reword below, taken from christian's doc
-
-Association rule induction [Agrawal et al. 1993] is a powerful method for so-called market basket analysis, which aims at finding regularities in the shopping behavior of customers of supermarkets, mail-order companies and the like. With the induction of association rules one tries to find sets of products that are frequently bought together, so that from the presence of certain products in a shopping cart one can infer (with a high probability) that certain other products are present. Such information, expressed in the form of rules, can often be used to increase the number of items sold, for instance, by appropriately arranging the products in the shelves of a supermarket (they may, for example, be placed adjacent to each other in order to invite even more customers to buy them together) or by directly suggesting items to a customer, which may be of interest for him/her.
-
-An association rule is a rule like "If a customer buys wine and bread, he often buys cheese, too." It expresses an association between (sets of) items, which may be products of a supermarket or a mail-order company, special equipment options of a car, optional services offered by telecommunication companies etc. An association rule states that if we pick a customer at random and find out that he selected certain items (bought certain products, chose certain options etc.), we can be confident, quantified by a percentage, that he also selected certain other items (bought certain other products, chose certain other options etc.).
-
-Apriori C code by Christian Borgelt. Taken directly from: todo, url
-
-* FIX (url)
+* This project can be found at: 
+* Christian Borgelt's original C code can be found at: http://www.borgelt.net/apriori.html
 
 == DESCRIPTION:
 
-FIX (describe your package)
+From Christian Borgelt's Apriori:http://www.borgelt.net/apriori.html documentation: 
 
-== FEATURES/PROBLEMS:
+  Association rule induction is a powerful method for so-called market basket
+  analysis, which aims at finding regularities in the shopping behavior of
+  customers.
 
-* FIX (list of features or problems)
+  With the induction of association rules one tries to find sets of
+  products that are frequently bought together, so that from the presence of
+  certain products in a shopping cart one can infer (with a high probability)
+  that certain other products are present. 
 
-== SYNOPSIS:
+  An association rule is a rule like "If a customer buys wine and bread, he often
+  buys cheese, too."
 
-  FIX (code sample of usage)
+  An association rule states that if we pick a customer at random and find out
+  that he selected certain items (bought certain products, chose certain options
+  etc.), we can be confident, quantified by a percentage, that he also selected
+  certain other items (bought certain other products, chose certain other options
+  etc.).
+
+This ruby library provides a convenient way to use this algorithm from Ruby.
+
+Original Apriori C code by Christian Borgelt. 
+
+== FEATURES:
+
+* Supports easy use from Ruby data types
+* Supports large data files
+
+== EXAMPLE USAGE:
+
+  require 'apriori'
+
+  transactions = [  %w{beer doritos},
+                    %w{apple cheese}, 
+                    %w{beer doritos}, 
+                    %w{apple cheese}, 
+                    %w{apple cheese}, 
+                    %w{apple doritos} ]
+
+  rules = Apriori.find_association_rules(transactions,
+                            :min_items => 2,
+                            :max_items => 5,
+                            :min_support => 1, 
+                            :max_support => 100, 
+                            :min_confidence => 20)
+
+  puts rules.join("\n")
+
+  # doritos <- beer (33.3/2, 100.0)
+  # means: 
+  # * beer appears in 33.3% (2 total) of the transactions (the support)
+  # * beer implies doritos 100% of the time (the confidence)
+
+See the +examples+ directory for more examples of usage.
 
 == EXAMPLE DATA:
 
+Example data can be found at:
+
 http://fimi.cs.helsinki.fi/data/
+
 http://fimi.cs.helsinki.fi/data/kosarak.dat
+
 http://fimi.cs.helsinki.fi/data/retail.dat
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+This library is compiled using a slightly modified version of Christian
+Borgelt's original C implementation of Apriori. The original code can be found
+at: http://www.borgelt.net/apriori.html
+
+* +gcc+ or similar compiler
+* <tt>ruby.h</tt>
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install apriori
 
 == LICENSE:
 
@@ -79,42 +119,3 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 =========================================================================
-
-= What options to support later:
-
--t#      target type (default: association rules)
-         (s: item sets, c: closed item sets, m: maximal item sets,
-          r: association rules, h: association hyperedges)
--k#      item separator for output (default: " ")
--p#      output format for support/confidence (default: "%.1f")
--y       print lift value (confidence divided by prior)
--g       write output in scanable form (quote certain characters)
-
--q#      sort items w.r.t. their frequency (default: 2)
-         (1: ascending, -1: descending, 0: do not sort,
-          2: ascending, -2: descending w.r.t. transaction size sum)
--b/f/r#  blank characters, field and record separators
-         (default: " \t\r", " \t", "\n")
-appfile  file stating item appearances (optional)
-
-
-= What options to support even later:
--e#      additional evaluation measure (default: none)
--!       print a list of additional evaluation measures
--d#      minimal value of additional evaluation measure (default: 10%)
--v       print value of additional rule evaluation measure
--l       do not load transactions into memory (work on input file)
--u#      filter unused items from transactions (default: 0.1)
-         (0: do not filter items w.r.t. usage in sets,
-         <0: fraction of removed items for filtering,
-         >0: take execution times ratio into account)
--h       do not organize transactions as a prefix tree
--j       use quicksort to sort the transactions (default: heapsort)
--z       minimize memory usage (default: maximize speed)
--C#      comment characters (default: "#")
-
-
-Don't even know what they do: 
--o       use original definition of the support of a rule (body & head)
--x       extended support output (print both rule support types)
-

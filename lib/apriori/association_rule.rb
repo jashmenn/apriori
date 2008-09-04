@@ -1,6 +1,18 @@
 module Apriori
 
-  #  contains two itemsets, "antecendent" and "consequent"
+  # This class represents a single association rule.
+  # 
+  # From Christian's original documentation: 
+  # 
+  # An association rule is a rule like "If a customer buys wine and bread, he often
+  # buys cheese, too."
+  # 
+  # An association rule states that if we pick a customer at random and find out
+  # that he selected certain items (bought certain products, chose certain options
+  # etc.), we can be confident, quantified by a percentage, that he also selected
+  # certain other items (bought certain other products, chose certain other options
+  # etc.).
+  # 
   class AssociationRule
     attr_accessor :antecedent
     attr_accessor :num_antecedent_transactions
@@ -11,7 +23,7 @@ module Apriori
 
     class << self
       # Given +filename+ of a file containing itemset information returns an
-      # Array of +Itemset+s. File format must match that of #parse_line. 
+      # Array of <tt>Itemset</tt>s. File format must match that of #parse_line. 
       def from_file(filename)
         rules = []
         begin
@@ -42,6 +54,8 @@ module Apriori
       end
     end
 
+    # Returns the standard form of this rule as a string. For instance:
+    #  foo <- bar baz bangle (66.7/4, 75.0)
     def to_s
       "%s <- %s (%0.01f%s, %0.01f)" % [ consequent, 
         antecedent.join(" "), 
@@ -49,10 +63,11 @@ module Apriori
         num_antecedent_transactions ? "/#{num_antecedent_transactions}" : "", confidence ]
     end
 
-    def eql?(object)
+    def eql?(object) #:nodoc:
       self == (object)
     end
 
+    # Check equality between to <tt>AssociationRule</tt>s
     def ==(object)
       return true if object.equal?(self)
       if object.instance_of?(self.class)

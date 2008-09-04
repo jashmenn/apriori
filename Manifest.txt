@@ -8,6 +8,8 @@ config/hoe.rb
 config/requirements.rb
 lib/apriori.rb
 lib/apriori/version.rb
+lib/apriori/adapter.rb
+lib/apriori/association_rule.rb
 script/console
 script/destroy
 script/generate
