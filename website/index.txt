@@ -41,10 +41,10 @@ h2. The Algorithm:
 
 This document is not an introduction to the Apriori algorithm. To find out more about Apriori see:
 
-* http://www.borgelt.net/papers/cstat_02.pdf
-* http://www.borgelt.net/papers/fimi_03.pdf
-* http://www.borgelt.net/apriori.html
-* http://en.wikipedia.org/wiki/Apriori_algorithm
+* "http://www.borgelt.net/papers/cstat_02.pdf":http://www.borgelt.net/papers/cstat_02.pdf
+* "http://www.borgelt.net/papers/fimi_03.pdf":http://www.borgelt.net/papers/fimi_03.pdf
+* "http://www.borgelt.net/apriori.html":http://www.borgelt.net/apriori.html
+* "http://en.wikipedia.org/wiki/Apriori_algorithm":http://en.wikipedia.org/wiki/Apriori_algorithm
 
 h2. Demonstration of usage
 

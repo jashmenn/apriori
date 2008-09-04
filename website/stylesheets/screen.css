@@ -1,5 +1,5 @@
 body {
-  background-color: #E1D1F1;
+  background-color: #E3E3E3;
   font-family: "Georgia", sans-serif;
   font-size: 16px;
   line-height: 1.6em;
@@ -136,3 +136,7 @@ pre, code {
 	cursor:	hand;
 }
 
+#version img {
+  border: 1px solid #616463;
+  padding: 4px;
+}
