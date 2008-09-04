@@ -105,6 +105,7 @@ tasks/attic.rake
 tasks/deployment.rake
 tasks/environment.rake
 tasks/website.rake
+tasks/install.rake
 test/apriori_test.rb
 test/fixtures/market_basket_results_test.txt
 test/fixtures/market_basket_string_test.txt
