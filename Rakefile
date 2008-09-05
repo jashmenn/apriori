@@ -1,7 +1,15 @@
 require 'config/requirements'
 require 'config/hoe' # setup Hoe + all gem configuration
 
+class Rake::Task
+  def abandon
+    prerequisites.clear
+    @actions.clear
+  end
+end
+
 Dir['tasks/**/*.rake'].each { |rake| load rake }
 
-task :default => [:extension] do
-end
+Rake::Task[:default].abandon
+task :default => :extension 
+
