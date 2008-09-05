@@ -66,7 +66,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rdoc_pattern = /^(lib|bin)|txt$/
 
   # p.spec_extras = {:extensions, FileList["ext/**/extconf.rb"].to_a} # A hash of extra values to set in the gemspec.
-  p.spec_extras = {:extensions, 'rakefile'} # A hash of extra values to set in the gemspec.
+  p.spec_extras = {:extensions, 'Rakefile'} # A hash of extra values to set in the gemspec.
 
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
