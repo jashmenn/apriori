@@ -3,8 +3,8 @@ SHELL = /bin/sh
 
 #### Start of system configuration section. ####
 
-srcdir = /Users/nathan/Programming/datamining/apriori/ext
-topdir = /usr/local/lib/ruby/1.8/i686-darwin8.10.1
+srcdir = /home/nathan/tmp/apriori/ext
+topdir = /usr/local/lib/ruby/1.8/i686-linux
 hdrdir = $(topdir)
 VPATH = $(srcdir):$(topdir):$(hdrdir)
 prefix = $(DESTDIR)/usr/local
@@ -37,29 +37,29 @@ libexecdir = $(exec_prefix)/libexec
 CC = gcc
 LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
-LIBRUBYARG_SHARED = 
+LIBRUBYARG_SHARED = -Wl,-R -Wl,$(libdir) -L$(libdir) -L. 
 LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
 
 RUBY_EXTCONF_H = 
-CFLAGS   =  -fno-common -g -O2 -pipe -fno-common 
+CFLAGS   =  -fPIC -g -O2 
 INCFLAGS = -I. -I$(topdir) -I$(hdrdir) -I$(srcdir)
-CPPFLAGS =   -I/Users/nathan/Programming/datamining/apriori/ext/util/src -I/Users/nathan/Programming/datamining/apriori/ext/math/src -I/Users/nathan/Programming/datamining/apriori/ext/apriori/src 
+CPPFLAGS =   -I/home/nathan/tmp/apriori/ext/util/src -I/home/nathan/tmp/apriori/ext/math/src -I/home/nathan/tmp/apriori/ext/apriori/src 
 CXXFLAGS = $(CFLAGS) 
 DLDFLAGS =   
-LDSHARED = cc -dynamic -bundle -undefined suppress -flat_namespace
+LDSHARED = $(CC) -shared
 AR = ar
 EXEEXT = 
 
 RUBY_INSTALL_NAME = ruby
 RUBY_SO_NAME = ruby
-arch = i686-darwin8.10.1
-sitearch = i686-darwin8.10.1
+arch = i686-linux
+sitearch = i686-linux
 ruby_version = 1.8
 ruby = /usr/local/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 MAKEDIRS = mkdir -p
-INSTALL = /usr/bin/install -c
+INSTALL = /usr/bin/ginstall -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
 COPY = cp
@@ -69,7 +69,7 @@ COPY = cp
 preload = 
 
 libpath = $(libdir)
-LIBPATH =  -L"$(libdir)"
+LIBPATH =  -L'$(libdir)' -Wl,-R'$(libdir)'
 DEFFILE = 
 
 CLEANFILES = 
@@ -79,11 +79,11 @@ extout =
 extout_prefix = 
 target_prefix = 
 LOCAL_LIBS = 
-LIBS =   -ldl -lobjc  
+LIBS =   -ldl -lcrypt -lm   -lc
 SRCS = vecops.c nimap.c tabscan.c scform.c gamma.c chi2.c tract.c istree.c apriori_wrapper.c Apriori.c
-OBJS = /Users/nathan/Programming/datamining/apriori/ext/util/src/vecops.o /Users/nathan/Programming/datamining/apriori/ext/util/src/nimap.o /Users/nathan/Programming/datamining/apriori/ext/util/src/tabscan.o /Users/nathan/Programming/datamining/apriori/ext/util/src/scform.o /Users/nathan/Programming/datamining/apriori/ext/math/src/gamma.o /Users/nathan/Programming/datamining/apriori/ext/math/src/chi2.o /Users/nathan/Programming/datamining/apriori/ext/apriori/src/tract.o /Users/nathan/Programming/datamining/apriori/ext/apriori/src/istree.o apriori_wrapper.o Apriori.o
+OBJS = /home/nathan/tmp/apriori/ext/util/src/vecops.o /home/nathan/tmp/apriori/ext/util/src/nimap.o /home/nathan/tmp/apriori/ext/util/src/tabscan.o /home/nathan/tmp/apriori/ext/util/src/scform.o /home/nathan/tmp/apriori/ext/math/src/gamma.o /home/nathan/tmp/apriori/ext/math/src/chi2.o /home/nathan/tmp/apriori/ext/apriori/src/tract.o /home/nathan/tmp/apriori/ext/apriori/src/istree.o apriori_wrapper.o Apriori.o
 TARGET = apriori_ext
-DLLIB = $(TARGET).bundle
+DLLIB = $(TARGET).so
 EXTSTATIC = 
 STATIC_LIB = 
 
@@ -92,7 +92,7 @@ RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
 RUBYARCHDIR   = $(sitearchdir)$(target_prefix)
 
 TARGET_SO     = $(DLLIB)
-CLEANLIBS     = $(TARGET).bundle $(TARGET).il? $(TARGET).tds $(TARGET).map
+CLEANLIBS     = $(TARGET).so $(TARGET).il? $(TARGET).tds $(TARGET).map
 CLEANOBJS     = *.o *.a *.s[ol] *.pdb *.exp *.bak
 
 all:		$(DLLIB)
