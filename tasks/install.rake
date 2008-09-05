@@ -4,3 +4,10 @@ task :extension do
   sh "ruby setup.rb config"
   sh "ruby setup.rb setup"
 end
+
+namespace :github do
+  desc "Generate the Gemspec for github"
+  task :generate_gemspec do
+    sh "rake --silent debug_gem > apriori.gemspec"
+  end
+end

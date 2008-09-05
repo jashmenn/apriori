@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{apriori}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
   s.date = %q{2008-09-04}
   s.summary = %q{Ruby Apriori is a library to efficiently find item association rules within large sets of transactions.}
   s.require_paths = ["lib", "ext"]
@@ -16,4 +16,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--main", "README.txt"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "README.txt", "TODO.txt", "test/fixtures/market_basket_results_test.txt", "test/fixtures/market_basket_string_test.txt", "test/fixtures/results.txt", "test/fixtures/sample.txt", "website/index.txt"]
   s.extensions = ["rakefile"]
+  s.add_dependency(%q<rake>, [">= 0.0.0"])
+  s.add_dependency(%q<newgem>, [">= 0.0.0"])
+  s.add_dependency(%q<rubigen>, [">= 0.0.0"])
 end

@@ -12,4 +12,4 @@ examples/test_data/chess.dat
 examples/test_data/kosarak.dat
 examples/test_data/retail.dat
 ext/apriori/src/apriori
-pkg/apriori-0.1.0
+pkg/apriori-*
