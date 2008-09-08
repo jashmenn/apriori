@@ -102,6 +102,16 @@ at: http://www.borgelt.net/apriori.html
 
 * gem install --source http://gems.github.com jashmenn-apriori
 
+== FAQ:
+
+If you get the error:
+
+  undefined method `add_development_dependency' for #<Gem::Specification:0x2aabcba63ed8>
+
+This is because hoe 1.7.0 requires rubygems 1.2.0. To upgrade, simply do the following:
+
+  gem update --system
+
 == LICENSE:
 
 === Apriori C code
