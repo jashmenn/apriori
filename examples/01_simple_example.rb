@@ -17,6 +17,15 @@ rules = Apriori.find_association_rules(transactions,
 
 puts rules.join("\n")
 
+# RETURNS: 
+# doritos <- beer (33.3/2, 100.0)
+# beer <- doritos (50.0/3, 66.7)
+# apple <- doritos (50.0/3, 33.3)
+# doritos <- apple (66.7/4, 25.0)
+# apple <- cheese (50.0/3, 100.0)
+# cheese <- apple (66.7/4, 75.0)
+
+# NOTE:
 # doritos <- beer (33.3/2, 100.0)
 # means: 
 # * beer appears in 33.3% (2 total) of the transactions (the support)
