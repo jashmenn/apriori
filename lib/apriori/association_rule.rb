@@ -55,10 +55,14 @@ module Apriori
     end
 
     # Returns the standard form of this rule as a string. For instance:
-    #  foo <- bar baz bangle (66.7/4, 75.0)
+    #   bar baz bangle -> foo (66.7/4, 75.0)
     def to_s
-      "%s <- %s (%0.01f%s, %0.01f)" % [ consequent, 
-        antecedent.join(" "), 
+      # "%s <- %s (%0.01f%s, %0.01f)" % [ consequent, 
+      #   antecedent.join(" "), 
+      #   support, 
+      #   num_antecedent_transactions ? "/#{num_antecedent_transactions}" : "", confidence ]
+      "%s -> %s (%0.01f%s, %0.01f)" % [ antecedent.join(" "),
+        consequent, 
         support, 
         num_antecedent_transactions ? "/#{num_antecedent_transactions}" : "", confidence ]
     end
