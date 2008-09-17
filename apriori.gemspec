@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = %q{apriori}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nate Murray"]
-  s.date = %q{2008-09-12}
+  s.date = %q{2008-09-17}
   s.description = %q{Ruby Apriori is a library to efficiently find item association rules within large sets of transactions.}
   s.email = ["nate@natemurray.com"]
   s.extensions = ["Rakefile"]

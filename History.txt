@@ -1,3 +1,9 @@
+== 0.2.1 2008-09-12
+* updated requirements to check for the proper rubygems version 
+
+== 0.2.0 2008-09-12
+* changed the formatting of the association rules to_s to be more intuitive to those not familiar with formal prob.
+
 == 0.1.2 2008-09-05
 * fixed some bugs for case-sensitive machines
 
