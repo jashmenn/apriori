@@ -1,6 +1,12 @@
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 require 'apriori'
 
+transactions = [  %w{apple cheese}, 
+                  %w{beer doritos}, 
+                  %w{beer doritos eggs}, 
+                  %w{beer doritos}, 
+                  %w{apple cheese} ]
+
 transactions = [  %w{beer doritos},
                   %w{apple cheese}, 
                   %w{beer doritos}, 
