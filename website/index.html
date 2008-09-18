@@ -33,7 +33,7 @@
     <h1>apriori</h1>
     <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/apriori"; return false'>
       <p>Get Version</p>
-      <a href="http://rubyforge.org/projects/apriori" class="numbers">0.1.1</a>
+      <a href="http://rubyforge.org/projects/apriori" class="numbers">0.2.1</a>
       <img src="images/2118201782_4e87521dc9_m.jpg" />
     </div>
     <h1>&#x2192; &#8216;find item associations&#8217;</h1>
@@ -173,6 +173,21 @@ Borgelt&#8217;s C implementation of this algorithm.</p>
 rake test
 rake install_gem</pre>
 
+	<p>h3.</p>
+
+
+	<p>If you get the error:</p>
+
+
+	<pre><code>undefined method `add_development_dependency' for #<Gem::Specification:0x2aabcba63ed8></code></pre>
+
+
+	<p>This is because hoe 1.7.0 requires rubygems 1.2.0. To upgrade, simply do the following:</p>
+
+
+	<pre><code>gem update --system</code></pre>
+
+
 	<h2>License</h2>
 
 
@@ -222,7 +237,7 @@ included in all copies or substantial portions of the Software.</p>
 
 	<p>Comments are welcome. Send an email to <a href="mailto:nate@natemurray.com">Nate Murray</a> via the <a href="http://groups.google.com/group/apriori">forum</a></p>
     <p class="coda">
-      <a href="nate@natemurray.com">Nate Murray</a>, 4th September 2008<br>
+      <a href="nate@natemurray.com">Nate Murray</a>, 8th September 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
