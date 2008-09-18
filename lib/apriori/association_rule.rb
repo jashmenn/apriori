@@ -41,6 +41,10 @@ module Apriori
       # Given +line+ returns an Itemset 
       # Example of a line:
       #   foo <- bar baz bangle (66.7/4, 75.0)
+      # 
+      # Note that this is the opposite order of how apriori.rb returns the
+      # AssociationRule#to_s.  (apriori.rb returns the antecedent on the left
+      # and consequent on the right)
       def parse_line(line)
         is = new
         line =~ /(.+)\s+<-\s+(.+?)\s+\((\d+\.\d)(?:\/(\d+))?,\s+(\d+\.\d)\)/
@@ -56,6 +60,10 @@ module Apriori
 
     # Returns the standard form of this rule as a string. For instance:
     #   bar baz bangle -> foo (66.7/4, 75.0)
+    # # (antecedent)     (consequent)
+    #
+    # Note that this order is the opposite order of the association rules returned by apriori.c
+    # I believe this format reads more naturally.
     def to_s
       # "%s <- %s (%0.01f%s, %0.01f)" % [ consequent, 
       #   antecedent.join(" "), 

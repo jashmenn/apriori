@@ -1,3 +1,6 @@
+== 0.2.2 2008-09-13
+* updated all the docs for the association rules. preped the first gem
+
 == 0.2.1 2008-09-12
 * updated requirements to check for the proper rubygems version 
 

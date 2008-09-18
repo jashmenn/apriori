@@ -9,7 +9,7 @@ Ruby Apriori is a library to efficiently find item association rules within
 large sets of transactions. This library provides a Ruby interface to Christian
 Borgelt's C implementation of this algorithm.
 
-From Christian Borgelt's Apriori:http://www.borgelt.net/apriori.html documentation: 
+From "Christian Borgelt's Apriori":http://www.borgelt.net/apriori.html documentation: 
 
 bq. Association rule induction is a powerful method for so-called market basket
     analysis, which aims at finding regularities in the shopping behavior of
@@ -68,15 +68,15 @@ h2. Demonstration of usage
   puts rules.join("\n")
 
   # Results: 
-  # doritos <- beer (33.3/2, 100.0)
-  # beer <- doritos (50.0/3, 66.7)
-  # apple <- doritos (50.0/3, 33.3)
-  # doritos <- apple (66.7/4, 25.0)
-  # apple <- cheese (50.0/3, 100.0)
-  # cheese <- apple (66.7/4, 75.0)
+  # beer -> doritos (33.3/2, 100.0)
+  # doritos -> beer (50.0/3, 66.7)
+  # doritos -> apple (50.0/3, 33.3)
+  # apple -> doritos (66.7/4, 25.0)
+  # cheese -> apple (50.0/3, 100.0)
+  # apple -> cheese (66.7/4, 75.0)
 
   # NOTE:
-  # doritos <- beer (33.3/2, 100.0)
+  # beer -> doritos (33.3/2, 100.0)
   # means: 
   # * beer appears in 33.3% (2 total) of the transactions (the support)
   # * beer implies doritos 100% of the time (the confidence)
@@ -84,11 +84,13 @@ h2. Demonstration of usage
 
 See the +examples+ directory for more examples of usage.
 
-h2. Forum
+h2. Rdoc
 
-"http://groups.google.com/group/apriori":http://groups.google.com/group/apriori
+"View the rdoc here":http://apriori.rubyforge.org/rdoc/
 
-TODO - create Google Group - apriori
+h2. Mailing List
+
+"Rubyforge Mailing List":http://rubyforge.org/mail/?group_id=6948
 
 h2. How to submit patches
 
@@ -102,7 +104,7 @@ h3. Build and test instructions
 rake test
 rake install_gem</pre>
 
-h3.
+h3. <tt>add_development_dependency</tt> error
 
 If you get the error:
 
