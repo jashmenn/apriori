@@ -38,7 +38,7 @@ end
 REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
-VERS = Apriori::VERSION::STRING + (REV ? ".#{REV}" : "")
+#VERSION = Apriori::VERSION::STRING + (REV ? ".#{REV}" : "")
 RDOC_OPTS = ['--quiet', '--title', 'apriori documentation',
     "--opname", "index.html",
     "--line-numbers",
@@ -55,22 +55,22 @@ end
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new(GEM_NAME, VERS) do |p|
-  p.developer(AUTHOR, EMAIL)
-  p.description = DESCRIPTION
-  p.summary = DESCRIPTION
-  p.url = HOMEPATH
-  p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
-  p.test_globs = ["test/**/test_*.rb"]
-  p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
-  p.rdoc_pattern = /^(lib|bin)|txt$/
+$hoe = Hoe.spec GEM_NAME do
+  self.developer(AUTHOR, EMAIL)
+  self.description = DESCRIPTION
+  self.summary = DESCRIPTION
+  self.url = HOMEPATH
+  self.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
+  self.test_globs = ["test/**/test_*.rb"]
+  self.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
+  self.extra_rdoc_files = ["test/fixtures/market_basket_results_test.txt", "test/fixtures/market_basket_string_test.txt", "test/fixtures/results.txt", "test/fixtures/sample.txt"]
 
-  # p.spec_extras = {:extensions, FileList["ext/**/extconf.rb"].to_a} # A hash of extra values to set in the gemspec.
-  p.spec_extras = {:extensions, 'Rakefile'} # A hash of extra values to set in the gemspec.
+  # self.spec_extras = {:extensions, FileList["ext/**/extconf.rb"].to_a} # A hash of extra values to set in the gemspec.
+  self.spec_extras = {:extensions, 'Rakefile'} # A hash of extra values to set in the gemspec.
 
   # == Optional
-  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.extra_deps = EXTRA_DEPENDENCIES
+  self.changes = self.paragraphs_of("History.txt", 0..1).join("\n\n")
+  self.extra_deps = EXTRA_DEPENDENCIES
 
   end
 

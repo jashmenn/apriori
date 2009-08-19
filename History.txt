@@ -1,3 +1,6 @@
+== 0.2.3 2009-08-18
+* updated hoe configuration to be compatible with 2.x versions.
+
 == 0.2.2 2008-09-13
 * updated all the docs for the association rules. preped the first gem
 
